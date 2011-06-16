@@ -28,7 +28,7 @@ set :deploy_to, "/home/#{user}/www/cabinguru"
 # distribute your applications across servers (the instructions below put them
 # all on the same server, defined above as 'domain', adjust as necessary)
 role :app, domain
-role :web, domain
+role :web, domain, :asset_host_syncher => true
 role :db, domain, :primary => true
 
 # you might need to set this if you aren't seeing password prompts
@@ -60,13 +60,16 @@ ssh_options[:forward_agent] = true
 
 # task which causes Passenger to initiate a restart
 namespace :deploy do
+  before "deploy:symlink", "assets:package_cached_assets"
+  before "deploy:symlink", "s3_asset_host:synch_public"
   task :restart do
     run "touch #{current_path}/tmp/restart.txt" 
   end
 end
- 
+
 # # optional task to reconfigure databases
 after "deploy:update_code", :configure_database
+
 
 # Removed for first deployment
 # TODO: Uncomment
