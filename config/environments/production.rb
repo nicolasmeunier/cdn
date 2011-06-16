@@ -32,7 +32,18 @@ Cdn::Application.configure do
   config.serve_static_assets = false
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
-  config.action_controller.asset_host = "d27wbv8i25tol0.cloudfront.net"
+  config.action_controller.asset_host = Proc.new { |source, request|
+     if source.starts_with?('/images')
+           [ "#{request.protocol}d27wbv8i25tol0.cloudfront.net",
+             "#{request.protocol}d27wbv8i25tol0.cloudfront.net",
+             "#{request.protocol}d27wbv8i25tol0.cloudfront.net",
+             "#{request.protocol}d27wbv8i25tol0.cloudfront.net" ][source.hash % 4]
+     else
+       # use the cahed and zipped subdomain for assets that can be zipped (i.e. non-binary filetypes)
+       # => text/html text/css application/x-javascript application/javascript
+       "#{request.protocol}cache.yourapp.com"
+     end
+  }
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
