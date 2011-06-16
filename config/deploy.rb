@@ -67,7 +67,7 @@ end
 
 # # optional task to reconfigure databases
 after "deploy:update_code", :configure_database
-before "deploy:symlink", "s3_asset_host:synch_public"
+#before "deploy:symlink", "s3_asset_host:synch_public"
 
 # Removed for first deployment
 # TODO: Uncomment
