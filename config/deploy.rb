@@ -16,8 +16,6 @@
 # |---- deploy:symlink
 # |-- deploy:restart
 
-require "whenever/capistrano"
-
 set :user, 'ubuntu'
 set :domain, 'www.ec2-204-236-177-181.us-west-1.compute.amazonaws.com'
 set :application, 'cdn'
