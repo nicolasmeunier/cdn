@@ -60,8 +60,6 @@ ssh_options[:forward_agent] = true
 
 # task which causes Passenger to initiate a restart
 namespace :deploy do
-  before "deploy:symlink", "assets:package_cached_assets"
-  before "deploy:symlink", "s3_asset_host:synch_public"
   task :restart do
     run "touch #{current_path}/tmp/restart.txt" 
   end
@@ -69,7 +67,7 @@ end
 
 # # optional task to reconfigure databases
 after "deploy:update_code", :configure_database
-
+before "deploy:symlink", "s3_asset_host:synch_public"
 
 # Removed for first deployment
 # TODO: Uncomment
