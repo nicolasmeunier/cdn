@@ -18,7 +18,7 @@ module S3sync
 	require 'getoptlong'
 	#require 'generator' # http://www.ruby-doc.org/stdlib/libdoc/generator/rdoc/classes/Generator.html
 	require_relative 'thread_generator' # memory doesn't leak with this one, at least nothing near as bad
-	require_relative 'md5'
+	require 'digest/md5'
 	require 'tempfile'
 	require_relative 's3try'
   require_relative 's3config'
