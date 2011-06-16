@@ -16,6 +16,14 @@ Cdn::Application.configure do
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
+  
+  # Disable Rails's static asset server
+  # In production, Apache or nginx will already do this
+  config.serve_static_assets = false
+
+  # Enable serving of images, stylesheets, and javascripts from an asset server
+  config.action_controller.asset_host = "d27wbv8i25tol0.cloudfront.net"
+  
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
