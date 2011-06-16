@@ -3,9 +3,6 @@ Cdn::Application.routes.draw do
   # first created -> highest priority.
 
   resources :photos do 
-    member do
-      get :photos
-    end
   end
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

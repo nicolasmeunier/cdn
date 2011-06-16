@@ -1,6 +1,6 @@
-class PhotoController < ActionController::Base
-  def photos
-    @photos = photos.find :all
+class PhotosController < ActionController::Base
+  def index
+    @photos = Photo.find :all
   end
   
 end
