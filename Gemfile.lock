@@ -28,6 +28,7 @@ GEM
       activemodel (= 3.0.8)
       activesupport (= 3.0.8)
     activesupport (3.0.8)
+    aproxacs-s3sync (1.3.6)
     arel (2.0.10)
     aws-s3 (0.6.2)
       builder
@@ -92,6 +93,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aproxacs-s3sync
   aws-s3
   capistrano
   haml
