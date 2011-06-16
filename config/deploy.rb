@@ -17,15 +17,13 @@
 # |-- deploy:restart
 
 set :user, 'ubuntu'
-set :domain, 'www.ec2-204-236-177-181.us-west-1.compute.amazonaws.com'
+set :domain, 'ec2-204-236-177-181.us-west-1.compute.amazonaws.com'
 set :application, 'cdn'
 set :rails_env, 'production'
 
 # file paths
-#set :repository,  "#{user}@#{domain}:git/#{application}.git"
 set :repository, "git@github.com:nicolasmeunier/cdn.git"  # Your clone URL
 set :deploy_to, "/home/#{user}/www/cabinguru"
-#set :dropbox_bin, "/home/#{user}/bin/dropbox.py"
 
 # distribute your applications across servers (the instructions below put them
 # all on the same server, defined above as 'domain', adjust as necessary)
@@ -66,32 +64,9 @@ namespace :deploy do
     run "touch #{current_path}/tmp/restart.txt" 
   end
 end
-# 
-# # This was removed for the first time in which there are no delayed jobs workers
-# # TODO: Uncomment
-# # before "configure_dropbox_pre", :stop_delayed_job_workers
-# before "deploy:update", :configure_dropbox_pre
-# 
-# task :stop_delayed_job_workers, :roles => :app do
-#   run "cd #{current_path}; RAILS_ENV=#{rails_env} script/delayed_job stop"
-# end
-# 
-# task :start_delayed_job_workers, :roles => :app do
-#   run "cd #{current_path}; RAILS_ENV=#{rails_env} script/delayed_job start"
-# end
-# 
-# task :configure_dropbox_pre, :roles => :app do
-#   run "python #{dropbox_bin} stop"
-#   run "mv #{deploy_to}/current/public/Dropbox #{deploy_to}/public/"
-# end
-# after "deploy:symlink", :configure_dropbox_post
-# task :configure_dropbox_post, :roles => :app do
-#   run "mv #{deploy_to}/public/Dropbox #{deploy_to}/current/public/"
-#   run "python #{dropbox_bin} start"
-# end
-# 
+ 
 # # optional task to reconfigure databases
-# after "deploy:update_code", :configure_database
+after "deploy:update_code", :configure_database
 
 # Removed for first deployment
 # TODO: Uncomment
