@@ -76,5 +76,7 @@ before "deploy:symlink", "s3_asset_host:synch_public"
 desc "copy database.yml into the current release path"
 task :configure_database, :roles => :app do
   db_config = "#{deploy_to}/config/database.yml"
+  s3_config = "#{deploy_to}/config/synch_s3_asset_host.yml"
   run "cp #{db_config} #{release_path}/config/database.yml"
+  run "cp #{s3_config} #{release_path}/config/synch_s3_asset_host.yml"
 end
