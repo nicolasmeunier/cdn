@@ -13,10 +13,22 @@ gem 'sqlite3'
 # Deploy with Capistrano
 gem 'capistrano'
 gem 'jrails'
-gem 'haml'
-gem 'sass'
+
+group :development, :test do
+  gem 'jammit'
+  gem "rspec-rails"
+  gem "cucumber-rails"
+  gem "capybara"
+  gem "factory_girl_rails"
+  gem "haml"
+  gem "sass"
+  gem "compass"
+  gem "rb-fsevent"  # for mac development machines
+end
+
 
 gem 'aws-s3'
+gem 'right_aws'
 #gem 'aproxacs-s3sync'
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
 # gem 'ruby-debug'

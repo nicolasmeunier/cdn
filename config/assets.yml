@@ -1,0 +1,10 @@
+package_assets: on
+ 
+javascripts:
+  common:
+    - public/javascripts/*.js
+    
+stylesheets: 
+  common:
+    - public/stylesheets/*.css
+    - public/stylesheets/**/*.css

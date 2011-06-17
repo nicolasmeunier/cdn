@@ -3,4 +3,4 @@ db/*.sqlite3
 log/*.log
 tmp/
 config/database.yml
-config/synch_s3_asset_host.yml
+config/s3.yml
