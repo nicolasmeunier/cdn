@@ -13,6 +13,8 @@ gem 'sqlite3'
 # Deploy with Capistrano
 gem 'capistrano'
 gem 'jrails'
+gem 'haml'
+gem 'jammit'
 
 group :development, :test do
   gem 'jammit'
@@ -20,7 +22,6 @@ group :development, :test do
   gem "cucumber-rails"
   gem "capybara"
   gem "factory_girl_rails"
-  gem "haml"
   gem "sass"
   gem "compass"
   gem "rb-fsevent"  # for mac development machines
