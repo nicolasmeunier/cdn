@@ -83,6 +83,9 @@ end
 task :configure_asset_hash, :roles => :app do
   hash = (`git rev-parse HEAD` || "").chomp
   asset_yml = "hash: " + hash
+  #on local machine
+  `echo '#{asset_yml}' > config/asset_hash.yml`
+  #on remote machine
   asset_config = "#{release_path}/config/asset_hash.yml"
   run "echo '#{asset_yml}' > #{asset_config}"
 end
