@@ -84,5 +84,5 @@ task :configure_asset_hash, :roles => :app do
   hash = (`git rev-parse HEAD` || "").chomp
   asset_yml = "hash: " + hash
   asset_config = "#{deploy_to}/config/asset_hash.yml"
-  run "echo #{asset_yml} > #{asset_config}"
+  run "echo" + asset_yml + " > #{asset_config}"
 end
