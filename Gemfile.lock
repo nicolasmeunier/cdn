@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/dblock/jammit.git
+  revision: 80ec16f8c332bd5d0cf03bb9095d07bb7b724c40
+  specs:
+    jammit (0.6.0)
+      yui-compressor (>= 0.9.3)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -83,8 +90,6 @@ GEM
     haml (3.1.2)
     highline (1.6.2)
     i18n (0.5.0)
-    jammit (0.6.3)
-      yui-compressor (>= 0.9.3)
     jrails (0.6.0)
     json (1.5.2)
     json_pure (1.5.2)
@@ -171,7 +176,7 @@ DEPENDENCIES
   cucumber-rails
   factory_girl_rails
   haml
-  jammit
+  jammit!
   jrails
   mysql2 (= 0.2.6)
   rails (= 3.0.8)

@@ -14,10 +14,11 @@ gem 'sqlite3'
 gem 'capistrano'
 gem 'jrails'
 gem 'haml'
-gem 'jammit'
+
+#Using forked jammit to allow not to rewrite the css relative paths.
+gem 'jammit', :git => 'git://github.com/dblock/jammit.git'
 
 group :development, :test do
-  gem 'jammit'
   gem "rspec-rails"
   gem "cucumber-rails"
   gem "capybara"

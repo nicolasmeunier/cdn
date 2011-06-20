@@ -19,12 +19,19 @@ Cdn::Application.configure do
   
   # Disable Rails's static asset server
   # In production, Apache or nginx will already do this
-  config.serve_static_assets = true
+  config.serve_static_assets =true
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
-  # config.action_controller.asset_host = "d27wbv8i25tol0.cloudfront.net"
+  config.action_controller.asset_host = Proc.new { |source,request| 
+    if source.starts_with?('/images') 
+      "d27wbv8i25tol0.cloudfront.net"
+    end
+  }
+  # Enable serving of images, stylesheets, and javascripts from an asset server
+  #config.action_controller.asset_host = Proc.new { |source,request|  
+  #  "d27wbv8i25tol0.cloudfront.net"
+  #}
   
-
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
 

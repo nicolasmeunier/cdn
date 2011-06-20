@@ -34,6 +34,19 @@ Cdn::Application.configure do
   # Enable serving of images, stylesheets, and javascripts from an asset server
   #config.action_controller.asset_host = "d27wbv8i25tol0.cloudfront.net"
 
+  hash_config = YAML.load_file(Rails.root.join("config/asset_hash.yml")).symbolize_keys
+  asset_hash = hash_config[:hash]
+
+  if asset_hash  
+    config.action_controller.asset_path = proc { |asset_path|
+      asset_path.gsub("assets/", "assets/#{asset_hash}/")
+    }
+  end
+
+  # Enable serving of images, stylesheets, and javascripts from an asset server
+  config.action_controller.asset_host = Proc.new { |source,request|  
+    "d27wbv8i25tol0.cloudfront.net"
+  }
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
 

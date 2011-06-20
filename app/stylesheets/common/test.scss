@@ -2,5 +2,11 @@
 
 $orange: #DB9805;
 #photo {
-  border: 3px $orange;
+  border: 3px solid $orange;
+}
+
+#im {
+   width: 100px;
+   height: 100px;
+   background:url(../images/rail.png) repeat-x #becfdd; 
 }
